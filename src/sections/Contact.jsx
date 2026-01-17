@@ -30,10 +30,12 @@ const Contact = () => {
         import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
       );
 
+      alert("Thank you! Your message has been sent successfully.");
       // Reset form and stop loading
       setForm({ name: "", email: "", message: "" });
     } catch (error) {
-      console.error("EmailJS Error:", error); // Optional: show toast
+      console.error("EmailJS Error:", error);
+      alert("Oops! Something went wrong. Please try again later.");
     } finally {
       setLoading(false); // Always stop loading, even on error
     }
