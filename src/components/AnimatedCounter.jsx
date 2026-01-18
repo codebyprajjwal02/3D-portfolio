@@ -16,24 +16,29 @@ const AnimatedCounter = () => {
       const numberElement = counter.querySelector(".counter-number");
       const item = counterItems[index];
 
-      // Set initial value to 0
-      gsap.set(numberElement, { innerText: "0" });
+      if (typeof item.value === 'number') {
+        // Set initial value to 0
+        gsap.set(numberElement, { innerText: "0" });
 
-      // Create the counting animation
-      gsap.to(numberElement, {
-        innerText: item.value,
-        duration: 2.5,
-        ease: "power2.out",
-        snap: { innerText: 1 }, // Ensures whole numbers
-        scrollTrigger: {
-          trigger: "#counter",
-          start: "top center",
-        },
-        // Add the suffix after counting is complete
-        onComplete: () => {
-          numberElement.textContent = `${item.value}${item.suffix}`;
-        },
-      });
+        // Create the counting animation
+        gsap.to(numberElement, {
+          innerText: item.value,
+          duration: 2.5,
+          ease: "power2.out",
+          snap: { innerText: 1 }, // Ensures whole numbers
+          scrollTrigger: {
+            trigger: "#counter",
+            start: "top center",
+          },
+          // Add the suffix after counting is complete
+          onComplete: () => {
+            numberElement.textContent = `${item.value}${item.suffix}`;
+          },
+        });
+      } else {
+        // For non-numeric values, just set the text directly
+        gsap.set(numberElement, { innerText: `${item.value}${item.suffix}` });
+      }
     }, counterRef);
   }, []);
 
@@ -47,7 +52,7 @@ const AnimatedCounter = () => {
             className="bg-zinc-900 rounded-lg p-10 flex flex-col justify-center"
           >
             <div className="counter-number text-white-50 text-5xl font-bold mb-2">
-              0 {item.suffix}
+              {typeof item.value === 'number' ? `0${item.suffix}` : `${item.value}${item.suffix}`}
             </div>
             <div className="text-white-50 text-lg">{item.label}</div>
           </div>
