@@ -26,14 +26,18 @@ const NavBar = () => {
     <header className={`navbar ${scrolled ? "scrolled" : "not-scrolled"}`}>
       <div className="inner">
         <a href="#hero" className="logo">
-          PKS JSM
+          PKS
         </a>
 
         <nav className="desktop">
           <ul>
             {navLinks.map(({ link, name }) => (
               <li key={name} className="group">
-                <a href={link}>
+                <a 
+                  href={link} 
+                  target={link.startsWith('http') ? '_blank' : '_self'}
+                  rel={link.startsWith('http') ? 'noopener noreferrer' : undefined}
+                >
                   <span>{name}</span>
                   <span className="underline" />
                 </a>

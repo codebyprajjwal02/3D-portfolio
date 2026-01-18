@@ -15,6 +15,10 @@ const navLinks = [
     name: "Testimonials",
     link: "#testimonials",
   },
+  {
+    name: "Resume",
+    link: "https://bit.ly/Prajjwal-Resume",
+  },
 ];
 
 const words = [
@@ -246,20 +250,16 @@ const testimonials = [
 
 const socialImgs = [
   {
-    name: "insta",
-    imgPath: "/images/insta.png",
-  },
-  {
-    name: "fb",
-    imgPath: "/images/fb.png",
-  },
-  {
-    name: "x",
-    imgPath: "/images/x.png",
+    name: "github",
+    imgPath: "/images/git.png",
   },
   {
     name: "linkedin",
     imgPath: "/images/linkedin.png",
+  },
+  {
+    name: "twitter",
+    imgPath: "/images/x.png",
   },
 ];
 
